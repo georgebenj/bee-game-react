@@ -63,6 +63,15 @@ function App() {
     ]})
 
     useEffect(() => {
+      if(localStorage.getItem("saveData")){
+        console.log("Save data found!")
+        setGameData(gameData, localStorage.getItem("saveData"))
+
+      }
+      else{
+        console.log("No save data found")
+        localStorage.setItem("saveData", JSON.stringify(gameData))
+      }
       const interval = setInterval(() =>{
         gameLoop()
         
